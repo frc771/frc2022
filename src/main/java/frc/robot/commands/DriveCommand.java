@@ -43,7 +43,7 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.print("entered drive");
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.

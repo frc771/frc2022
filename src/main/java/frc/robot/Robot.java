@@ -5,12 +5,16 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.Drive;
 import frc.robot.commands.DriveCommand;
 import frc.robot.RobotContainer;
 import frc.robot.Robot;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +29,11 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  // private Drive m_Drive;
+  private Subsystem m_subsystem;
+  private double startTime;
+  
+  
+// private Drive m_Drive;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -38,6 +46,8 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+   //  m_subsystem = new Subsystem(); 
+  //  m_subsystem = new subsystem();
     // m_Drive = new Drive();
   }
 
@@ -80,16 +90,43 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    
+    
+
+    startTime = Timer.getFPGATimestamp();
+    
+  
+
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
+      
       m_autonomousCommand.schedule();
+
     }
   }
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {
+  public void autonomousPeriodic( ) {
+   double time = Timer.getFPGATimestamp();
+   
+   //public static void delay = double 3;
+  
+
+    if (time-startTime <1.5){
+      //time-startime<1.5
+     //((Drive) m_subsystem).DriveBackward(-0.6);
+     
+     //((Drive)m_subsystem).MotorControllerGroup(-0.6);
+    // ((Drive)m_subsystem).MotorControllerGroup2(-0.6);
+     Drive.MotorControllerGroup.set(-0.4);
+     Drive.MotorControllerGroup2.set(0.4);
+
+    }
+    else{
+      ((Drive) m_subsystem).DriveBackward(0);
+    }
   }
 
   @Override

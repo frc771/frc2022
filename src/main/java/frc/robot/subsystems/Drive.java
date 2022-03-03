@@ -16,11 +16,11 @@ public class Drive extends SubsystemBase {
   private WPI_TalonSRX talonSRX1;
   private WPI_TalonSRX talonSRX2;
   private WPI_TalonSRX talonSRX3;
-  private MotorControllerGroup MotorControllerGroup;
+  public static MotorControllerGroup MotorControllerGroup;
   private WPI_TalonSRX talonSRX4;
   private WPI_TalonSRX talonSRX5;
   private WPI_TalonSRX talonSRX6;
-  private MotorControllerGroup MotorControllerGroup2;
+  public static MotorControllerGroup MotorControllerGroup2;
   public DifferentialDrive differentialDrive1;
 
   public Drive() {
@@ -52,14 +52,18 @@ public class Drive extends SubsystemBase {
     differentialDrive1.tankDrive(x * -0.75, y * 0.75);
 
   }
-  /*
-   * public void DriveForward() {
-   * TimedCommand
-   * 
-   * 
-   * }
-   * 
-   */
+  
+   public void DriveBackward(double speed) {
+   MotorControllerGroup.set(speed);
+   MotorControllerGroup2.set(speed);
+    }
+   
+
+   public void DriveStop(){
+    
+
+   }
+
 
   public void onTest() {
     talonSRX1.set(1);
@@ -74,4 +78,7 @@ public class Drive extends SubsystemBase {
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+
+  //public void MotorControllerGroup(double d) {
+  //}
 }

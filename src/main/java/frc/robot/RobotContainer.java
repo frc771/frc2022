@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.*;
 import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -29,10 +30,11 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drive m_Drive = new Drive();
   public Joystick driverJoystick = new Joystick(0);
+  private final Hanger m_Hanger = new Hanger();
 
   private final auto m_autoCommand = new auto(m_Drive);
 
-  public Joystick oJoystick = new Joystick(1);
+  public Joystick oJoystick = new Joystick(0);
 
   public JoystickButton A1 = new JoystickButton(oJoystick, 1);
   public JoystickButton B1 = new JoystickButton(oJoystick, 2);
@@ -58,7 +60,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_Drive.setDefaultCommand(new DriveCommand(m_Drive, () -> driverJoystick.getRawAxis(1), () -> driverJoystick.getRawAxis(5)));
-
+    m_Hanger.setDefaultCommand(new HangerKill(m_Hanger));
 
 
   }
@@ -72,6 +74,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
+    Y1.whileHeld(new HangerUp(m_Hanger));
+    A1.whileHeld(new HangerDown(m_Hanger));
+    TR.whileHeld(new HangerKill(m_Hanger));
 
   }
 

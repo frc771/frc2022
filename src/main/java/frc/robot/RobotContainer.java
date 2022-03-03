@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.GenericHID;
@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -31,6 +32,7 @@ public class RobotContainer {
   private final Drive m_Drive = new Drive();
   public Joystick driverJoystick = new Joystick(0);
   private final Hanger m_Hanger = new Hanger();
+  private final Intake m_Intake = new Intake();
 
   private final auto m_autoCommand = new auto(m_Drive);
 
@@ -61,6 +63,7 @@ public class RobotContainer {
 
     m_Drive.setDefaultCommand(new DriveCommand(m_Drive, () -> driverJoystick.getRawAxis(1), () -> driverJoystick.getRawAxis(5)));
     m_Hanger.setDefaultCommand(new HangerKill(m_Hanger));
+    m_Intake.setDefaultCommand(new IntakeKill(m_Intake)); 
 
 
   }
@@ -78,6 +81,9 @@ public class RobotContainer {
     Y1.whileHeld(new HangerUp(m_Hanger));
     A1.whileHeld(new HangerDown(m_Hanger));
     TR.whileHeld(new HangerKill(m_Hanger));
+    B1.whileHeld(new IntakeIn(m_Intake));
+    X1.whileHeld(new IntakeOut(m_Intake));
+    Y1.whileHeld(new IntakeKill(m_Intake));
 
   }
 

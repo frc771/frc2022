@@ -35,7 +35,6 @@ public class DriveCommand extends CommandBase {
 
     x = one;
     y = two;
-
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_subsystem);
   }

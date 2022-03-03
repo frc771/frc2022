@@ -34,6 +34,8 @@ public class Robot extends TimedRobot {
   
   
 // private Drive m_Drive;
+   private Drive m_Drive;
+   public static Subsystem m_Intake;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -49,6 +51,8 @@ public class Robot extends TimedRobot {
    //  m_subsystem = new Subsystem(); 
   //  m_subsystem = new subsystem();
     // m_Drive = new Drive();
+     m_Drive = new Drive();
+     m_Intake = new Intake();
   }
 
   /**

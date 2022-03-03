@@ -50,6 +50,9 @@ public class Drive extends SubsystemBase {
     // 2), 2) * Math.signum(x),
     // Math.pow(Math.sin(((Math.abs(y)) * Math.PI) / 2), 2) * Math.signum(y));
     differentialDrive1.tankDrive(x * -0.75, y * 0.75);
+    System.out.print("hi");
+   // differentialDrive1.curvatureDrive(x * 0.75, y * 0.75, false);
+
 
   }
   

@@ -124,12 +124,15 @@ public class Robot extends TimedRobot {
      
      //((Drive)m_subsystem).MotorControllerGroup(-0.6);
     // ((Drive)m_subsystem).MotorControllerGroup2(-0.6);
-     Drive.MotorControllerGroup.set(-0.4);
-     Drive.MotorControllerGroup2.set(0.4);
+     Drive.MotorControllerGroup.set(0.4);
+     Drive.MotorControllerGroup2.set(-0.4);
 
     }
     else{
-      ((Drive) m_subsystem).DriveBackward(0);
+      try {((Drive) m_subsystem).DriveBackward(0);}
+      catch (NullPointerException e) {
+        e.printStackTrace();
+      }
     }
   }
 

@@ -15,7 +15,7 @@ public class Hanger extends SubsystemBase {
   /** Creates a new Hanger. */
   public Hanger() {
     talonSRX7 = new WPI_TalonSRX(7);
-    talonSRX8 = new WPI_TalonSRX(8);
+   talonSRX8 = new WPI_TalonSRX(8);
     MotorControllerGroup3 = new MotorControllerGroup(talonSRX7, talonSRX8);
   }
 
@@ -36,3 +36,4 @@ public class Hanger extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 }
+

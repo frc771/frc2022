@@ -38,7 +38,7 @@ public class RobotContainer {
 
   private final auto m_autoCommand = new auto(m_Drive);
 
-  public Joystick oJoystick = new Joystick(0);
+  public Joystick oJoystick = new Joystick(1);
 
   public JoystickButton A1 = new JoystickButton(oJoystick, 1);
   public JoystickButton B1 = new JoystickButton(oJoystick, 2);

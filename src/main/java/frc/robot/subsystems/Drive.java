@@ -27,12 +27,18 @@ public class Drive extends SubsystemBase {
     talonSRX1 = new WPI_TalonSRX(1);
     talonSRX2 = new WPI_TalonSRX(2);
     talonSRX3 = new WPI_TalonSRX(3);
+    talonSRX1.setInverted(false);
+    talonSRX2.setInverted(false);
+    talonSRX3.setInverted(false);
     MotorControllerGroup = new MotorControllerGroup(talonSRX1, talonSRX2, talonSRX3);
     talonSRX4 = new WPI_TalonSRX(4);
     talonSRX5 = new WPI_TalonSRX(5);
     talonSRX6 = new WPI_TalonSRX(6);
+    talonSRX4.setInverted(false);
+    talonSRX5.setInverted(false);
+    talonSRX6.setInverted(false);
     MotorControllerGroup2 = new MotorControllerGroup(talonSRX4, talonSRX5, talonSRX6);
-
+    
     differentialDrive1 = new DifferentialDrive(MotorControllerGroup, MotorControllerGroup2);
 
   }
@@ -49,20 +55,22 @@ public class Drive extends SubsystemBase {
     // differentialDrive1.tankDrive(Math.pow(Math.sin(((Math.abs(x)) * Math.PI) /
     // 2), 2) * Math.signum(x),
     // Math.pow(Math.sin(((Math.abs(y)) * Math.PI) / 2), 2) * Math.signum(y));
-    differentialDrive1.tankDrive(x * -0.75, y * 0.75);
-    System.out.print("hi");
+  
+    differentialDrive1.tankDrive(x * -1, y * 1);
+    
+    //System.out.print("hi");
    // differentialDrive1.curvatureDrive(x * 0.75, y * 0.75, false);
 
 
   }
   
-   public void DriveBackward(double speed) {
-   MotorControllerGroup.set(speed);
-   MotorControllerGroup2.set(speed);
-    }
+  public void DriveBackward(double speed) {
+    MotorControllerGroup.set(speed);
+    MotorControllerGroup2.set(speed);
+  }
    
 
-   public void DriveStop(){
+   public void DriveStop(){ 
     
 
    }
